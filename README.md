@@ -2,10 +2,26 @@
 
 Utility to execute ELF binary directly from stdin pipe. It is useful to run binary via SSH without copy or install it on remote systems.
 
-## Example
+## Examples
+
+Run binary via ssh:
 
 ```
 $ cat build-1234 | ssh user@host 'elfexec --test=integration --env=production'
+```
+
+Compile source code and run it without temporary files:
+
+```
+$ echo '
+#include <unistd.h>
+
+int main(int argc, char* argv[])
+{
+    write(STDOUT_FILENO, "Hello!\n", 7);
+    return 0;
+}
+' | cc -xc - -o /dev/stdout | elfexec
 ```
 
 ## Download / Install
