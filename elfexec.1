@@ -1,0 +1,15 @@
+.TH elfexec 1 "Jan 4, 2018"
+.nh
+.ad left
+.SH NAME
+elfexec \- utility to execute ELF binary directly from stdin pipe. It is useful to run binary via SSH without copy or install it on remote systems.
+.SH SYNTAX
+.B elfexec
+.RI [ options ]
+.SH OPTIONS
+Executed binary options.
+.SH EXIT CODE
+Executed binary exit code or errno if elfexec failed.
+.SH EXAMPLE
+.TP
+$ cat timegrep | ssh user@host 'elfexec -e nginx -s 60 nginx-access.log'
