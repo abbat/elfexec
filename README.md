@@ -10,10 +10,12 @@ $ cat build-1234 | ssh user@host 'elfexec --test=integration --env=production'
 
 ## Download / Install
 
+Require Linux 3.17 or higher:
+
 * [Debian, Ubuntu](http://software.opensuse.org/download.html?project=home:antonbatenev:elfexec&package=elfexec)
 * [Fedora, openSUSE, CentOS](http://software.opensuse.org/download.html?project=home:antonbatenev:elfexec&package=elfexec)
 * [Ubuntu PPA](https://launchpad.net/~abbat/+archive/ubuntu/elfexec) - `ppa:abbat/elfexec`
-* [Arch](http://software.opensuse.org/download.html?project=home:antonbatenev:elfexec&package=elfexec), [Arch AUR](https://aur.archlinux.org/packages/elfexec/) (see also [AUR Helpers](https://wiki.archlinux.org/index.php/AUR_Helpers))
+* [Arch AUR](https://aur.archlinux.org/packages/elfexec/) (see also [AUR Helpers](https://wiki.archlinux.org/index.php/AUR_Helpers))
 * From source code:
 
 ```
