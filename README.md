@@ -10,6 +10,12 @@ Run binary via ssh:
 $ cat build-1234 | ssh user@host 'elfexec --test=integration --env=production'
 ```
 
+Decode base64 encoded binary and run it directly:
+
+```
+$ echo 'IyEvYmluL3NoCmVjaG8gIkhlbGxvISIK' | base64 -d | elfexec
+```
+
 Compile source code and run it without temporary files:
 
 ```
