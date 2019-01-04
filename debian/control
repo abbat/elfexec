@@ -1,0 +1,23 @@
+Source: elfexec
+Section: utils
+Priority: optional
+Maintainer: Anton Batenev <antonbatenev@yandex.ru>
+Build-Depends: debhelper (>= 7.0.50~)
+Standards-Version: 3.9.4
+Vcs-Git: https://github.com/abbat/elfexec.git
+Vcs-Browser: https://github.com/abbat/elfexec
+Homepage: https://github.com/abbat/elfexec
+
+Package: elfexec
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Utility to execute ELF binary directly from stdin pipe
+ Utility to execute ELF binary directly from stdin pipe.
+
+Package: elfexec-dbg
+Section: debug
+Priority: extra
+Depends: elfexec (= ${binary:Version}), ${misc:Depends}
+Architecture: any
+Description: Debug symbols for elfexec
+ Utility to execute ELF binary directly from stdin pipe.

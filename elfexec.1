@@ -1,4 +1,4 @@
-.TH elfexec 1 "Jan 4, 2018"
+.TH elfexec 1 "Jan 4, 2019"
 .nh
 .ad left
 .SH NAME
@@ -9,7 +9,7 @@ elfexec \- utility to execute ELF binary directly from stdin pipe. It is useful 
 .SH OPTIONS
 Executed binary options.
 .SH EXIT CODE
-Executed binary exit code or errno if elfexec failed.
+Executed binary exit code or 1 if self failed.
 .SH EXAMPLE
 .TP
-$ cat timegrep | ssh user@host 'elfexec -e nginx -s 60 nginx-access.log'
+$ cat build-1234 | ssh user@host 'elfexec --test=integration --env=production'
