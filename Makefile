@@ -3,7 +3,7 @@
 #
 
 NAME     := elfexec
-CC       := cc
+CC       ?= cc
 SOURCES  := $(NAME).c
 OBJECTS  := $(NAME).o
 CFLAGS   := -std=c99 --pedantic -Wall -Werror -O2

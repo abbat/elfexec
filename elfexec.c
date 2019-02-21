@@ -39,7 +39,6 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <sys/syscall.h>
-#include <linux/memfd.h>
 
 #ifndef SYS_memfd_create
     #error "memfd_create require Linux 3.17 or higher."
