@@ -39,6 +39,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <sys/syscall.h>
+#include <sys/utsname.h>
 
 #ifndef SYS_memfd_create
     #error "memfd_create require Linux 3.17 or higher."
@@ -58,9 +59,12 @@
     #define EE_MEMFD_NAME "elfexec"
 #endif
 
-/**
- * Main magic
- */
+int exit_failure(const char* msg)
+{
+    perror(msg);
+    return EXIT_FAILURE;
+}
+
 int main(int argc, char* argv[])
 {
     int     memfd;
@@ -71,34 +75,26 @@ int main(int argc, char* argv[])
 
     // there is no glibc wrapper for this system call
     memfd = syscall(SYS_memfd_create, EE_MEMFD_NAME, 0);
-    if (memfd == -1) {
-        perror("memfd_create");
-        exit(EXIT_FAILURE);
-    }
+    if (memfd == -1)
+        return exit_failure("memfd_create");
 
     do {
         nread = read(STDIN_FILENO, buf, EE_CHUNK_SIZE);
-        if (nread == -1) {
-            perror("read");
-            exit(EXIT_FAILURE);
-        }
+        if (nread == -1)
+            return exit_failure("read");
 
         offset = 0;
         while (offset < nread) {
             nwrite = write(memfd, buf + offset, nread - offset);
-            if (nwrite == -1) {
-                perror("write");
-                exit(EXIT_FAILURE);
-            }
+            if (nwrite == -1)
+                return exit_failure("write");
 
             offset += nwrite;
         }
     } while (nread > 0);
 
-    if (fexecve(memfd, argv, environ) == -1) {
-        perror("fexecve");
-        exit(EXIT_FAILURE);
-    }
+    if (fexecve(memfd, argv, environ) == -1)
+        return exit_failure("fexecve");
 
     // a successful call to fexecve never returns
     return EXIT_SUCCESS;
