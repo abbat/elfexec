@@ -1,3 +1,9 @@
+elfexec (0.2) unstable; urgency=low
+
+  * Small refactoring and documentaion.
+
+ -- Anton Batenev <antonbatenev@yandex.ru>  Fri, 22 Feb 2019 11:22:12 +0300
+
 elfexec (0.1) unstable; urgency=low
 
   * Initial.
