@@ -38,6 +38,7 @@ Require Linux 3.17 or higher:
 * [Fedora, openSUSE, CentOS](http://software.opensuse.org/download.html?project=home:antonbatenev:elfexec&package=elfexec)
 * [Ubuntu PPA](https://launchpad.net/~abbat/+archive/ubuntu/elfexec) - `ppa:abbat/elfexec`
 * [Arch AUR](https://aur.archlinux.org/packages/elfexec/) (see also [AUR Helpers](https://wiki.archlinux.org/index.php/AUR_Helpers))
+* [Precompiled static binaries](https://github.com/abbat/elfexec/releases) built with system libc (glibc) and musl libc for x64 and i386
 * From source code:
 
 ```
