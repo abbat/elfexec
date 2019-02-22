@@ -8,7 +8,7 @@ SOURCES  := $(NAME).c
 OBJECTS  := $(NAME).o
 CFLAGS   := -std=c99 --pedantic -Wall -Werror -O2
 CPPFLAGS :=
-LDFLAGS  := -Wl,-z,relro
+LDFLAGS  :=
 
 PREFIX   ?= /usr
 BINDIR   := $(PREFIX)/bin
