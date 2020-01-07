@@ -1,5 +1,5 @@
 Name:          elfexec
-Version:       0.2
+Version:       0.3
 Release:       1
 Summary:       Utility to execute ELF binary directly from stdin pipe
 Group:         Productivity/File utilities
@@ -45,5 +45,5 @@ rm -rf %{buildroot}
 
 
 %changelog
-* Fri Feb 22 2019 Anton Batenev <antonbatenev@yandex.ru> 0.2-1
+* Tue Jan 07 2020 Anton Batenev <antonbatenev@yandex.ru> 0.3-1
 - Initial RPM release

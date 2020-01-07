@@ -26,20 +26,18 @@
  * SUCH DAMAGE.
  */
 
-#define _GNU_SOURCE
-
-#ifdef __linux__
-    #include <features.h>
-#else
+#ifndef __linux__
     #error "This program is linux-only."
 #endif
 
-#include <errno.h>
+#define _GNU_SOURCE
+#include <features.h>
+
 #include <stdio.h>
+#include <errno.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <sys/syscall.h>
-#include <sys/utsname.h>
 
 #ifndef SYS_memfd_create
     #error "memfd_create require Linux 3.17 or higher."
@@ -71,10 +69,16 @@ int main(int argc, char* argv[])
     ssize_t nread;
     ssize_t nwrite;
     size_t  offset;
+    size_t  length;
     char    buf[EE_CHUNK_SIZE];
 
-    // there is no glibc wrapper for this system call
-    memfd = syscall(SYS_memfd_create, EE_MEMFD_NAME, 0);
+    /*
+     * memfd_create require Linux 3.17 and was added to:
+     * - glibc 2.27 (2018-02-01)
+     * - musl 1.1.20 (2018-09-04)
+     * use syscall to be compatible with older releases
+     */
+    memfd = (int)syscall(SYS_memfd_create, EE_MEMFD_NAME, 0);
     if (memfd == -1)
         return exit_failure("memfd_create");
 
@@ -84,18 +88,22 @@ int main(int argc, char* argv[])
             return exit_failure("read");
 
         offset = 0;
-        while (offset < nread) {
-            nwrite = write(memfd, buf + offset, nread - offset);
+        length = (size_t)nread;
+        while (offset < length) {
+            nwrite = write(memfd, buf + offset, length - offset);
             if (nwrite == -1)
                 return exit_failure("write");
 
-            offset += nwrite;
+            offset += (size_t)nwrite;
         }
     } while (nread > 0);
 
     if (fexecve(memfd, argv, environ) == -1)
         return exit_failure("fexecve");
 
-    // a successful call to fexecve never returns
+    /* unused */
+    (void)argc;
+
+    /* a successful call to fexecve never returns */
     return EXIT_SUCCESS;
 }

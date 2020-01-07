@@ -1,3 +1,9 @@
+elfexec (0.3) unstable; urgency=low
+
+  * Fix compiler warnings, ANSI C compatible.
+
+ -- Anton Batenev <antonbatenev@yandex.ru>  Tue, 07 Jan 2020 19:04:52 +0300
+
 elfexec (0.2) unstable; urgency=low
 
   * Small refactoring and documentaion.

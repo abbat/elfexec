@@ -6,7 +6,7 @@ NAME     := elfexec
 CC       ?= cc
 SOURCES  := $(NAME).c
 OBJECTS  := $(NAME).o
-CFLAGS   := -std=c99 --pedantic -Wall -Werror -O2
+CFLAGS   := -ansi -pedantic -pedantic-errors -Wall -Werror -Wextra -Wconversion -O2
 CPPFLAGS :=
 LDFLAGS  :=
 
