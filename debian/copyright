@@ -3,7 +3,7 @@ Upstream-Name: elfexec
 Source: https://github.com/abbat/elfexec
 
 Files: *
-Copyright: 2019, Anton Batenev <antonbatenev@yandex.ru>
+Copyright: 2019-2020, Anton Batenev <antonbatenev@yandex.ru>
 License: BSD
 
 License: BSD

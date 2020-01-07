@@ -30,7 +30,7 @@ clean:
 	rm -f $(OBJECTS)
 
 %.o: %.c
-	$(CC) $(CFLAGS) $< -c -o $@
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
 
 install: $(NAME)
 	mkdir -p $(abspath $(DESTDIR)/$(BINDIR))

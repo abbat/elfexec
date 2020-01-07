@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Anton Batenev
+ * Copyright (c) 2019-2020 Anton Batenev
  *
  * All rights reserved.
  *
